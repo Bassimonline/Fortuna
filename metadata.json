@@ -1,0 +1,5 @@
+{
+  "name": "Fortuna DAO Frontend",
+  "description": "A modern, interactive frontend for the Fortuna DAO platform. It allows users to browse and donate to community-driven projects, track funding progress, and view project details.",
+  "requestFramePermissions": []
+}
