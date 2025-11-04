@@ -1,7 +1,11 @@
 
 import React from 'react';
 
-const CtaSection: React.FC = () => {
+interface CtaSectionProps {
+    onStartProject: () => void;
+}
+
+const CtaSection: React.FC<CtaSectionProps> = ({ onStartProject }) => {
     return (
         <section className="py-24">
             <div className="container mx-auto px-4">
@@ -14,12 +18,15 @@ const CtaSection: React.FC = () => {
                             Whether you're a creator with a groundbreaking idea or a supporter of innovation, Fortuna DAO is your platform.
                         </p>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <button className="bg-white text-purple-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:scale-105 hover:bg-gray-200 transition-all transform-gpu">
+                            <button 
+                                onClick={onStartProject}
+                                className="bg-white text-purple-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:scale-105 hover:bg-gray-200 transition-all transform-gpu"
+                            >
                                 Start a Project
                             </button>
-                             <button className="bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold py-3 px-8 rounded-lg hover:bg-white/30 transition-all">
+                             <a href="#" className="inline-block bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold py-3 px-8 rounded-lg hover:bg-white/30 transition-all">
                                 Join our Discord
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

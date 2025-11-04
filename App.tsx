@@ -65,6 +65,14 @@ const App: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleStartProjectClick = useCallback(() => {
+    if (user) {
+        handleOpenSubmitProject();
+    } else {
+        handleConnectWallet();
+    }
+  }, [user, handleOpenSubmitProject, handleConnectWallet]);
+
   const handleCloseSubmitProject = useCallback(() => {
     setViewState({ type: 'dashboard' });
     window.scrollTo(0, 0);
@@ -134,13 +142,17 @@ const App: React.FC = () => {
             return (
               <>
                 <main className="relative z-10 container mx-auto px-4 py-8">
-                  <Hero />
+                  <Hero onExploreProjects={handleOpenProjects} />
                   <Stats />
                   <HowItWorks />
                   <Features />
                 </main>
-                <CtaSection />
-                <Footer />
+                <CtaSection onStartProject={handleStartProjectClick} />
+                <Footer 
+                  onOpenProjects={handleOpenProjects}
+                  onOpenGovernance={handleOpenGovernance}
+                  onOpenAbout={handleOpenAbout}
+                />
               </>
             );
     }

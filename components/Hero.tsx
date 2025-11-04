@@ -2,7 +2,11 @@
 import React from 'react';
 import { BackgroundRippleEffect } from './ui/background-ripple-effect';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onExploreProjects: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onExploreProjects }) => {
   return (
     <section className="relative text-center py-24 md:py-32 overflow-hidden">
       <BackgroundRippleEffect />
@@ -23,7 +27,10 @@ const Hero: React.FC = () => {
             </p>
         </div>
         <div className="mt-12 opacity-0 animate-fadeInUp" style={{ animationDelay: '0.6s' }}>
-          <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-4 px-10 rounded-lg text-lg shadow-lg shadow-purple-600/30 hover:scale-105 transition-transform transform-gpu">
+          <button 
+            onClick={onExploreProjects}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-4 px-10 rounded-lg text-lg shadow-lg shadow-purple-600/30 hover:scale-105 transition-transform transform-gpu"
+          >
             Explore Projects
           </button>
         </div>

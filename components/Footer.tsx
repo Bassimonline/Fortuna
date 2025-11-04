@@ -1,7 +1,19 @@
 import React from 'react';
 import { TwitterIcon, DiscordIcon, GithubIcon, ArrowRightIcon } from './icons';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+    onOpenProjects: () => void;
+    onOpenGovernance: () => void;
+    onOpenAbout: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onOpenProjects, onOpenGovernance, onOpenAbout }) => {
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, action: () => void) => {
+    e.preventDefault();
+    action();
+  }
+
   return (
     <footer className="border-t border-gray-800/50">
       <div className="container mx-auto px-4 pt-16 pb-8">
@@ -21,10 +33,10 @@ const Footer: React.FC = () => {
             <div className="md:col-span-1">
                 <h4 className="font-semibold text-white mb-4">Explore</h4>
                 <nav className="flex flex-col gap-3">
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">Projects</a>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">Governance</a>
+                    <a href="#" onClick={(e) => handleLinkClick(e, onOpenProjects)} className="text-gray-400 hover:text-white transition-colors">Projects</a>
+                    <a href="#" onClick={(e) => handleLinkClick(e, onOpenGovernance)} className="text-gray-400 hover:text-white transition-colors">Governance</a>
                     <a href="#" className="text-gray-400 hover:text-white transition-colors">Documentation</a>
-                    <a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a>
+                    <a href="#" onClick={(e) => handleLinkClick(e, onOpenAbout)} className="text-gray-400 hover:text-white transition-colors">About Us</a>
                 </nav>
             </div>
             
