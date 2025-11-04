@@ -36,27 +36,35 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ user, onBack, onProjectCl
         </button>
 
         {/* User Profile Header */}
-        <header className="flex flex-col sm:flex-row items-center gap-6 mb-12 bg-gray-900/50 border border-gray-800 p-8 rounded-3xl">
-            <img src={user.avatarUrl} alt="User Avatar" className="w-24 h-24 rounded-full border-4 border-purple-500" />
-            <div className="text-center sm:text-left">
-                <h1 className="text-3xl font-bold text-white">My Dashboard</h1>
-                <div className="flex items-center gap-2 mt-2">
-                    <p className="font-mono text-gray-400">{user.address}</p>
-                    <button onClick={() => navigator.clipboard.writeText(user.address)} className="text-gray-500 hover:text-white transition-colors">
-                        <CopyIcon className="w-4 h-4" />
-                    </button>
-                </div>
-                <div className="flex gap-6 mt-4 justify-center sm:justify-start">
-                    <div>
-                        <span className="text-sm text-gray-400">XRP Balance: </span>
-                        <span className="font-semibold text-white">{user.xrpBalance.toLocaleString()}</span>
+        <header className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-12 bg-gray-900/50 border border-gray-800 p-8 rounded-3xl">
+            <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+                <img src={user.avatarUrl} alt="User Avatar" className="w-24 h-24 rounded-full border-4 border-purple-500" />
+                <div>
+                    <h1 className="text-3xl font-bold text-white">My Dashboard</h1>
+                    <div className="flex items-center gap-2 mt-2 justify-center sm:justify-start">
+                        <p className="font-mono text-gray-400">{user.address}</p>
+                        <button onClick={() => navigator.clipboard.writeText(user.address)} className="text-gray-500 hover:text-white transition-colors">
+                            <CopyIcon className="w-4 h-4" />
+                        </button>
                     </div>
-                     <div>
-                        <span className="text-sm text-gray-400">FORT Balance: </span>
-                        <span className="font-semibold text-white">{user.fortBalance.toLocaleString()}</span>
+                    <div className="flex gap-6 mt-4 justify-center sm:justify-start">
+                        <div>
+                            <span className="text-sm text-gray-400">XRP Balance: </span>
+                            <span className="font-semibold text-white">{user.xrpBalance.toLocaleString()}</span>
+                        </div>
+                         <div>
+                            <span className="text-sm text-gray-400">FORT Balance: </span>
+                            <span className="font-semibold text-white">{user.fortBalance.toLocaleString()}</span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <button 
+                onClick={onOpenSubmitProject}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg shadow-purple-600/30 hover:scale-105 transition-transform transform-gpu shrink-0"
+            >
+                Submit a Project
+            </button>
         </header>
         
         {/* Stats Grid */}
@@ -64,24 +72,6 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ user, onBack, onProjectCl
             <StatCard title="Total XRP Donated" value={totalDonated.toLocaleString()} />
             <StatCard title="Projects Supported" value={projectsSupported} />
             <StatCard title="Governance Votes Cast" value={votesCast} />
-        </section>
-
-        {/* Submit Project CTA */}
-        <section className="mb-12">
-            <div className="relative bg-gradient-to-r from-purple-800 via-pink-700 to-orange-600 rounded-3xl p-8 md:p-10 text-center overflow-hidden">
-                <div className="relative z-10">
-                    <h2 className="text-3xl font-extrabold text-white mb-3">Have an innovative idea?</h2>
-                    <p className="text-lg text-purple-200 max-w-2xl mx-auto mb-6">
-                        Submit your project to the Fortuna DAO community for a chance to get funded and bring your vision to life.
-                    </p>
-                    <button 
-                        onClick={onOpenSubmitProject}
-                        className="bg-white text-purple-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:scale-105 hover:bg-gray-200 transition-all transform-gpu"
-                    >
-                        Submit a Project
-                    </button>
-                </div>
-            </div>
         </section>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
